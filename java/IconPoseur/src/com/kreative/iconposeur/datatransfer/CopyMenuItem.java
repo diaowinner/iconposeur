@@ -9,10 +9,10 @@ public class CopyMenuItem extends JMenuItem {
 	private static final long serialVersionUID = 1L;
 	
 	public CopyMenuItem() {
-		super("Copy");
+		super("复制");
 		int skm = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 		setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, skm));
-		setActionCommand("Copy");
+		setActionCommand("复制");
 		addActionListener(TransferActionListener.getInstance());
 	}
 }

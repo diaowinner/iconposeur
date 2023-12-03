@@ -9,10 +9,10 @@ public class PasteMenuItem extends JMenuItem {
 	private static final long serialVersionUID = 1L;
 	
 	public PasteMenuItem() {
-		super("Paste");
+		super("粘贴");
 		int skm = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 		setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, skm));
-		setActionCommand("Paste");
+		setActionCommand("粘贴");
 		addActionListener(TransferActionListener.getInstance());
 	}
 }

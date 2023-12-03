@@ -94,11 +94,11 @@ public class IcnsFrame extends JFrame implements SaveInterface {
 	}
 	
 	private JMenu createViewMenu() {
-		JMenu viewMenu = new JMenu("View");
-		viewMenu.add(new ViewMenuItem("Standard", KeyEvent.VK_1, standardPanel));
-		viewMenu.add(new ViewMenuItem("Retina", KeyEvent.VK_2, retinaPanel));
-		viewMenu.add(new ViewMenuItem("Classic", KeyEvent.VK_3, classicPanel));
-		viewMenu.add(new ViewMenuItem("Compressed", KeyEvent.VK_4, compressedPanel));
+		JMenu viewMenu = new JMenu("视图");
+		viewMenu.add(new ViewMenuItem("标准", KeyEvent.VK_1, standardPanel));
+		viewMenu.add(new ViewMenuItem("视网膜", KeyEvent.VK_2, retinaPanel));
+		viewMenu.add(new ViewMenuItem("经典", KeyEvent.VK_3, classicPanel));
+		viewMenu.add(new ViewMenuItem("压缩", KeyEvent.VK_4, compressedPanel));
 		return viewMenu;
 	}
 	

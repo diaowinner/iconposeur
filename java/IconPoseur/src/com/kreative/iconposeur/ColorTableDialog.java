@@ -43,29 +43,29 @@ public class ColorTableDialog extends JDialog {
 	private boolean eventLock = false;
 	
 	public ColorTableDialog(Dialog parent, int rows, int columns, int[] colorTable) {
-		super(parent, "Color Table");
+		super(parent, "色彩表");
 		setModal(true);
 		make(rows, columns, colorTable);
 	}
 	
 	public ColorTableDialog(Frame parent, int rows, int columns, int[] colorTable) {
-		super(parent, "Color Table");
+		super(parent, "色彩表");
 		setModal(true);
 		make(rows, columns, colorTable);
 	}
 	
 	public ColorTableDialog(Window parent, int rows, int columns, int[] colorTable) {
-		super(parent, "Color Table");
+		super(parent, "色彩表");
 		setModal(true);
 		make(rows, columns, colorTable);
 	}
 	
 	private void make(int rows, int columns, int[] colorTable) {
 		panel = new ColorTablePanel(rows, columns, colorTable);
-		okButton = new JButton("OK");
-		cancelButton = new JButton("Cancel");
-		loadButton = new JButton("Load...");
-		saveButton = new JButton("Save...");
+		okButton = new JButton("确定");
+		cancelButton = new JButton("取消");
+		loadButton = new JButton("加载…");
+		saveButton = new JButton("保存…");
 		
 		Preset[] presets = createPresets(colorTable.length);
 		presetMenu = new JComboBox(presets);
@@ -80,7 +80,7 @@ public class ColorTableDialog extends JDialog {
 		}
 		
 		JPanel presetPanel = new JPanel(new BorderLayout(4, 4));
-		presetPanel.add(new JLabel("Table:"), BorderLayout.LINE_START);
+		presetPanel.add(new JLabel("表："), BorderLayout.LINE_START);
 		presetPanel.add(presetMenu, BorderLayout.CENTER);
 		JPanel leftPanel = new JPanel(new BorderLayout(8, 8));
 		leftPanel.add(presetPanel, BorderLayout.PAGE_START);
@@ -166,7 +166,7 @@ public class ColorTableDialog extends JDialog {
 	
 	private static String lastLoadDirectory = null;
 	private void load() {
-		FileDialog fd = new FileDialog(this, "Load", FileDialog.LOAD);
+		FileDialog fd = new FileDialog(this, "加载", FileDialog.LOAD);
 		if (lastLoadDirectory != null) fd.setDirectory(lastLoadDirectory);
 		fd.setVisible(true);
 		String parent = fd.getDirectory();
@@ -184,13 +184,13 @@ public class ColorTableDialog extends JDialog {
 				return;
 			}
 			JOptionPane.showMessageDialog(
-				this, "The format of the selected file was not recognized.",
-				"Load", JOptionPane.ERROR_MESSAGE
+				this, "选择的此格式不能被辨认。",
+				"加载", JOptionPane.ERROR_MESSAGE
 			);
 		} catch (IOException ioe) {
 			JOptionPane.showMessageDialog(
-				this, "An error occurred while loading the selected file.",
-				"Load", JOptionPane.ERROR_MESSAGE
+				this, "当加载此选择的文件的时候，一个错误发生。",
+				"加载", JOptionPane.ERROR_MESSAGE
 			);
 		}
 	}
@@ -217,29 +217,29 @@ public class ColorTableDialog extends JDialog {
 	private void readBMP(DataInputStream in) throws IOException {
 		int[] ct = panel.getColorTable();
 		int magic = in.readShort();
-		if (magic != 0x424D) throw new IOException("Invalid value in header");
+		if (magic != 0x424D) throw new IOException("在头部的非法值");
 		int fileLength = Integer.reverseBytes(in.readInt());
-		if (fileLength < 54) throw new IOException("Invalid value in header");
+		if (fileLength < 54) throw new IOException("在头部的非法值");
 		in.readInt(); // reserved
 		int dataOffset = Integer.reverseBytes(in.readInt());
-		if (dataOffset < 54) throw new IOException("Invalid value in header");
+		if (dataOffset < 54) throw new IOException("在头部的非法值");
 		int headerLength = Integer.reverseBytes(in.readInt());
-		if (headerLength < 40) throw new IOException("Invalid value in header");
+		if (headerLength < 40) throw new IOException("在头部的非法值");
 		int width = Integer.reverseBytes(in.readInt());
-		if (width <= 0) throw new IOException("Invalid value in header");
+		if (width <= 0) throw new IOException("在头部的非法值");
 		int height = Integer.reverseBytes(in.readInt());
-		if (height <= 0) throw new IOException("Invalid value in header");
+		if (height <= 0) throw new IOException("在头部的非法值");
 		int planes = Short.reverseBytes(in.readShort());
-		if (planes < 0 || planes > 1) throw new IOException("Invalid value in header");
+		if (planes < 0 || planes > 1) throw new IOException("在头部的非法值");
 		int bpp = Short.reverseBytes(in.readShort());
-		if (bpp < 1 || bpp > 32) throw new IOException("Invalid value in header");
+		if (bpp < 1 || bpp > 32) throw new IOException("在头部的非法值");
 		in.readInt(); // compression
 		int dataLength = Integer.reverseBytes(in.readInt());
-		if (dataLength < 0) throw new IOException("Invalid value in header");
+		if (dataLength < 0) throw new IOException("在头部的非法值");
 		in.readInt(); // ppm-x
 		in.readInt(); // ppm-y
 		int colorCount = Integer.reverseBytes(in.readInt());
-		if (colorCount < 0) throw new IOException("Invalid value in header");
+		if (colorCount < 0) throw new IOException("在头部的非法值");
 		if (colorCount == 0 && bpp <= 8) colorCount = (1 << bpp);
 		in.readInt(); // important colors
 		in.skipBytes(headerLength - 40);
@@ -254,7 +254,7 @@ public class ColorTableDialog extends JDialog {
 	
 	private static String lastSaveDirectory = null;
 	private void save() {
-		FileDialog fd = new FileDialog(this, "Save", FileDialog.SAVE);
+		FileDialog fd = new FileDialog(this, "保存", FileDialog.SAVE);
 		if (lastSaveDirectory != null) fd.setDirectory(lastSaveDirectory);
 		fd.setVisible(true);
 		String parent = fd.getDirectory();
@@ -272,13 +272,13 @@ public class ColorTableDialog extends JDialog {
 				return;
 			}
 			JOptionPane.showMessageDialog(
-				this, "The format of the selected file was not recognized.",
-				"Save", JOptionPane.ERROR_MESSAGE
+				this, "选择的此格式不能被辨认。",
+				"保存", JOptionPane.ERROR_MESSAGE
 			);
 		} catch (IOException ioe) {
 			JOptionPane.showMessageDialog(
-				this, "An error occurred while saving the selected file.",
-				"Save", JOptionPane.ERROR_MESSAGE
+				this, "当保存此选择的文件的时候，一个错误发生。",
+				"保存", JOptionPane.ERROR_MESSAGE
 			);
 		}
 	}
@@ -352,78 +352,78 @@ public class ColorTableDialog extends JDialog {
 	private static Preset[] createPresets(final int colorCount) {
 		List<Preset> presets = new ArrayList<Preset>();
 		presets.add(new Preset() {
-			@Override public String toString() { return "Custom"; }
+			@Override public String toString() { return "自定义"; }
 			@Override public int[] createColorTable() { return null; }
 		});
 		presets.add(new Preset() {
-			@Override public String toString() { return "Adaptive"; }
+			@Override public String toString() { return "适应"; }
 			@Override public int[] createColorTable() { return new int[colorCount]; }
 		});
 		if (colorCount == 2) {
 			presets.add(new Preset() {
-				@Override public String toString() { return "Black to White"; }
+				@Override public String toString() { return "黑至白"; }
 				@Override public int[] createColorTable() { return ColorTables.createBlackToWhite(1); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "White to Black"; }
+				@Override public String toString() { return "白至黑"; }
 				@Override public int[] createColorTable() { return ColorTables.createWhiteToBlack(1); }
 			});
 		}
 		if (colorCount == 4) {
 			presets.add(new Preset() {
-				@Override public String toString() { return "Black to White"; }
+				@Override public String toString() { return "黑至白"; }
 				@Override public int[] createColorTable() { return ColorTables.createBlackToWhite(2); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "White to Black"; }
+				@Override public String toString() { return "白至黑"; }
 				@Override public int[] createColorTable() { return ColorTables.createWhiteToBlack(2); }
 			});
 		}
 		if (colorCount == 16) {
 			presets.add(new Preset() {
-				@Override public String toString() { return "Windows"; }
+				@Override public String toString() { return "视窗"; }
 				@Override public int[] createColorTable() { return ColorTables.createWindows4(); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "Mac OS"; }
+				@Override public String toString() { return "苹果电脑操作系统"; }
 				@Override public int[] createColorTable() { return ColorTables.createMacintosh4(); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "Black to White"; }
+				@Override public String toString() { return "黑至白"; }
 				@Override public int[] createColorTable() { return ColorTables.createBlackToWhite(4); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "White to Black"; }
+				@Override public String toString() { return "白至黑"; }
 				@Override public int[] createColorTable() { return ColorTables.createWhiteToBlack(4); }
 			});
 		}
 		if (colorCount == 256) {
 			presets.add(new Preset() {
-				@Override public String toString() { return "Windows (Adaptive)"; }
+				@Override public String toString() { return "视窗（自适应）"; }
 				@Override public int[] createColorTable() { return ColorTables.createWindowsBase(); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "Windows (Eis)"; }
+				@Override public String toString() { return "视窗（Eis）"; }
 				@Override public int[] createColorTable() { return ColorTables.createWindowsEis(); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "Windows (Paint)"; }
+				@Override public String toString() { return "视窗（画图）"; }
 				@Override public int[] createColorTable() { return ColorTables.createWindowsPaint(); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "Windows (Web-Safe)"; }
+				@Override public String toString() { return "视窗（网络安全色）"; }
 				@Override public int[] createColorTable() { return ColorTables.createWindowsWebSafe(); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "Mac OS"; }
+				@Override public String toString() { return "苹果电脑操作系统"; }
 				@Override public int[] createColorTable() { return ColorTables.createMacintosh8(); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "Black to White"; }
+				@Override public String toString() { return "黑至白"; }
 				@Override public int[] createColorTable() { return ColorTables.createBlackToWhite(8); }
 			});
 			presets.add(new Preset() {
-				@Override public String toString() { return "White to Black"; }
+				@Override public String toString() { return "白至黑"; }
 				@Override public int[] createColorTable() { return ColorTables.createWhiteToBlack(8); }
 			});
 		}

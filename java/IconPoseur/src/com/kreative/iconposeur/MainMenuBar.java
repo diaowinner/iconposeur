@@ -18,7 +18,7 @@ public class MainMenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 	
 	public MainMenuBar(Window w, SaveInterface si, JMenu... menus) {
-		JMenu fileMenu = new JMenu("File");
+		JMenu fileMenu = new JMenu("文件");
 		fileMenu.add(new NewIcnsMenuItem());
 		fileMenu.add(new NewIcoMenuItem());
 		fileMenu.add(new OpenMenuItem());
@@ -32,7 +32,7 @@ public class MainMenuBar extends JMenuBar {
 		}
 		add(fileMenu);
 		
-		JMenu editMenu = new JMenu("Edit");
+		JMenu editMenu = new JMenu("编辑");
 		editMenu.add(new CutMenuItem());
 		editMenu.add(new CopyMenuItem());
 		editMenu.add(new PasteMenuItem());
@@ -40,7 +40,7 @@ public class MainMenuBar extends JMenuBar {
 		add(editMenu);
 		
 		for (JMenu menu : menus) {
-			if (menu.getText().equals("Edit")) {
+			if (menu.getText().equals("编辑")) {
 				editMenu.addSeparator();
 				for (int i = 0, n = menu.getItemCount(); i < n; i++) {
 					editMenu.add(menu.getItem(i));
@@ -54,7 +54,7 @@ public class MainMenuBar extends JMenuBar {
 	public static class NewIcnsMenuItem extends JMenuItem {
 		private static final long serialVersionUID = 1L;
 		public NewIcnsMenuItem() {
-			super("New .icns File");
+			super("新 .icns 文件");
 			setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, SwingUtils.SHORTCUT_KEY));
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -67,7 +67,7 @@ public class MainMenuBar extends JMenuBar {
 	public static class NewIcoMenuItem extends JMenuItem {
 		private static final long serialVersionUID = 1L;
 		public NewIcoMenuItem() {
-			super("New .ico File");
+			super("新 .ico 文件");
 			setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, SwingUtils.SHORTCUT_KEY | KeyEvent.SHIFT_MASK));
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -80,7 +80,7 @@ public class MainMenuBar extends JMenuBar {
 	public static class OpenMenuItem extends JMenuItem {
 		private static final long serialVersionUID = 1L;
 		public OpenMenuItem() {
-			super("Open...");
+			super("打开…");
 			setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, SwingUtils.SHORTCUT_KEY));
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -93,7 +93,7 @@ public class MainMenuBar extends JMenuBar {
 	public static class CloseMenuItem extends JMenuItem {
 		private static final long serialVersionUID = 1L;
 		public CloseMenuItem(final Window window) {
-			super("Close Window");
+			super("关闭窗口");
 			setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, SwingUtils.SHORTCUT_KEY));
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -106,7 +106,7 @@ public class MainMenuBar extends JMenuBar {
 	public static class SaveMenuItem extends JMenuItem {
 		private static final long serialVersionUID = 1L;
 		public SaveMenuItem(final SaveInterface si) {
-			super("Save");
+			super("保存");
 			setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, SwingUtils.SHORTCUT_KEY));
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -119,7 +119,7 @@ public class MainMenuBar extends JMenuBar {
 	public static class SaveAsMenuItem extends JMenuItem {
 		private static final long serialVersionUID = 1L;
 		public SaveAsMenuItem(final SaveInterface si) {
-			super("Save As...");
+			super("另存为…");
 			setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, SwingUtils.SHORTCUT_KEY | KeyEvent.SHIFT_MASK));
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -132,7 +132,7 @@ public class MainMenuBar extends JMenuBar {
 	public static class ExitMenuItem extends JMenuItem {
 		private static final long serialVersionUID = 1L;
 		public ExitMenuItem() {
-			super("Exit");
+			super("退出");
 			setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, SwingUtils.SHORTCUT_KEY));
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {

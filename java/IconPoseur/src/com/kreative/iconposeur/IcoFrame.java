@@ -106,8 +106,8 @@ public class IcoFrame extends JFrame implements SaveInterface {
 	}
 	
 	private JMenu createEditMenu() {
-		JMenu editMenu = new JMenu("Edit");
-		JMenuItem ctmi = new JMenuItem("Color Table...");
+		JMenu editMenu = new JMenu("编辑");
+		JMenuItem ctmi = new JMenuItem("颜色表");
 		ctmi.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -120,9 +120,9 @@ public class IcoFrame extends JFrame implements SaveInterface {
 	}
 	
 	private JMenu createViewMenu() {
-		JMenu viewMenu = new JMenu("View");
-		viewMenu.add(new ViewMenuItem("Standard", KeyEvent.VK_1, standardPanel));
-		viewMenu.add(new ViewMenuItem("Advanced", KeyEvent.VK_2, advancedPanel));
+		JMenu viewMenu = new JMenu("视图");
+		viewMenu.add(new ViewMenuItem("标准", KeyEvent.VK_1, standardPanel));
+		viewMenu.add(new ViewMenuItem("高级", KeyEvent.VK_2, advancedPanel));
 		return viewMenu;
 	}
 	
@@ -188,7 +188,7 @@ public class IcoFrame extends JFrame implements SaveInterface {
 			JPanel panel1 = new JPanel();
 			panel1.setLayout(new BoxLayout(panel1, BoxLayout.LINE_AXIS));
 			panel1.add(createIconWell(
-				"128 (Black & White)",
+				"128（黑白）",
 				new WinIconWellModel.Size(128, 128, 1, false, palette1, true, true, true, true)
 			));
 			panel1.add(Box.createHorizontalStrut(16));
@@ -227,7 +227,7 @@ public class IcoFrame extends JFrame implements SaveInterface {
 			JPanel panel4 = new JPanel();
 			panel4.setLayout(new BoxLayout(panel4, BoxLayout.LINE_AXIS));
 			panel4.add(createIconWell(
-				"128 (16 Colors)",
+				"128（16 色）",
 				new WinIconWellModel.Size(128, 128, 4, false, palette4, true, true, true, true)
 			));
 			panel4.add(Box.createHorizontalStrut(16));
@@ -266,7 +266,7 @@ public class IcoFrame extends JFrame implements SaveInterface {
 			JPanel panel8 = new JPanel();
 			panel8.setLayout(new BoxLayout(panel8, BoxLayout.LINE_AXIS));
 			panel8.add(createIconWell(
-				"128 (256 Colors)",
+				"128（256 色）",
 				new WinIconWellModel.Size(128, 128, 8, false, palette8, true, true, true, true)
 			));
 			panel8.add(Box.createHorizontalStrut(16));
@@ -305,7 +305,7 @@ public class IcoFrame extends JFrame implements SaveInterface {
 			JPanel panel16 = new JPanel();
 			panel16.setLayout(new BoxLayout(panel16, BoxLayout.LINE_AXIS));
 			panel16.add(createIconWell(
-				"128 (High Color)",
+				"128（增强色）",
 				new WinIconWellModel.Size(128, 128, 16, false, palette0, true, true, true, true)
 			));
 			panel16.add(Box.createHorizontalStrut(16));
@@ -344,7 +344,7 @@ public class IcoFrame extends JFrame implements SaveInterface {
 			JPanel panel32 = new JPanel();
 			panel32.setLayout(new BoxLayout(panel32, BoxLayout.LINE_AXIS));
 			panel32.add(createIconWell(
-				"128 (True Color)",
+				"128（真彩色）",
 				new WinIconWellModel.Size(128, 128, 32, false, palette0, true, true, true, true)
 			));
 			panel32.add(Box.createHorizontalStrut(16));
@@ -383,7 +383,7 @@ public class IcoFrame extends JFrame implements SaveInterface {
 			JPanel panelp = new JPanel();
 			panelp.setLayout(new BoxLayout(panelp, BoxLayout.LINE_AXIS));
 			panelp.add(createIconWell(
-				"128 (PNG)",
+				"128（PNG）",
 				new WinIconWellModel.Size(128, 128, 32, true, palette0, true, true, true, true)
 			));
 			panelp.add(Box.createHorizontalStrut(16));
@@ -463,8 +463,8 @@ public class IcoFrame extends JFrame implements SaveInterface {
 			return true;
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(
-				this, "An error occurred while saving this file.",
-				"Save", JOptionPane.ERROR_MESSAGE
+				this, "当保存此文件时，一个错误发生。",
+				"保存", JOptionPane.ERROR_MESSAGE
 			);
 			return false;
 		}

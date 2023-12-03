@@ -9,10 +9,10 @@ public class CutMenuItem extends JMenuItem {
 	private static final long serialVersionUID = 1L;
 	
 	public CutMenuItem() {
-		super("Cut");
+		super("剪切");
 		int skm = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 		setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, skm));
-		setActionCommand("Cut");
+		setActionCommand("剪切");
 		addActionListener(TransferActionListener.getInstance());
 	}
 }
