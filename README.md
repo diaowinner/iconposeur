@@ -1,17 +1,17 @@
 # Icon Poseur
 
-Open-source recreation of the Icon Composer application. Create icons for Mac OS X without Xcode. Also creates Windows ico files.
+图标编写器应用程序的开源再现。为没有Xcode的Mac OS X创建图标。还创建窗口ico文件。
 
 ![](wiki/icnsico.png)
 
-Drag and drop images or image files into the icon window to create your icon. Or select a size and copy and paste.
+将图像或图像文件拖放到图标窗口中，以创建图标。或选择一个大小，并复制和粘贴。
 
 ![](wiki/dnd.png)
 
-Multiple views allow access to all sizes and color depths of icons, including retina, 8-bit, 4-bit, and black and white versions.
+多个视图允许访问所有大小和颜色深度的图标，包括视网膜、8位、4位和黑白版本。
 
 ![](wiki/views.png)
 
-For 8-bit Windows icons, the color table is user-selectable. Color tables can be loaded from or saved to ACT or BMP files.
+对于8位的Windows图标，颜色表是用户可选择的。颜色表可以从以下文件中加载或保存到ACT或BMP文件中。
 
 ![](wiki/colors.png)

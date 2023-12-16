@@ -25,28 +25,28 @@ public class SaveChangesDialog extends JDialog {
 	private Action action;
 	
 	public SaveChangesDialog(Dialog parent, String name) {
-		super(parent, "Save Changes");
+		super(parent, "保存更改");
 		setModal(true);
 		make(name);
 	}
 	
 	public SaveChangesDialog(Frame parent, String name) {
-		super(parent, "Save Changes");
+		super(parent, "保存更改");
 		setModal(true);
 		make(name);
 	}
 	
 	public SaveChangesDialog(Window parent, String name) {
-		super(parent, "Save Changes");
+		super(parent, "保存更改");
 		setModal(true);
 		make(name);
 	}
 	
 	private void make(String name) {
-		label = new JLabel("Save changes to \u201C" + name + "\u201D before closing?");
-		dontSaveButton = new JButton("Don\u2019t Save");
-		cancelButton = new JButton("Cancel");
-		saveButton = new JButton("Save");
+		label = new JLabel("在关闭之前，保存更改至\u201C" + name + "\u201D？");
+		dontSaveButton = new JButton("不保存");
+		cancelButton = new JButton("取消");
+		saveButton = new JButton("保存");
 		
 		JPanel leftButtonPanel = new JPanel(new FlowLayout());
 		leftButtonPanel.add(dontSaveButton);
